@@ -1,0 +1,158 @@
+.logo {
+    display: block;
+    margin: 30px;
+    width: 10%;
+ }
+  
+ body {
+     background: #F5FFFA;
+     width: 100%;
+     max-width: 960px;
+     margin: 0 auto;
+ }
+  
+ h1{ font-family: 'oswald', sans-serif;
+    
+
+ }
+ 
+ 
+
+  
+ h3{
+     font-family: sans-serif;
+     font-weight: normal;
+ }
+ 
+ nav {
+     font-family: 'oswald';
+     margin: 20px 20;
+     display: flex;
+     justify-content: space-evenly;
+     align-items: center;
+     padding: 6px;
+     
+     
+ }
+  
+ .nav-bar {
+     font-size: 25px;
+     font-weight: bold;
+     list-style-type: none;
+     margin: 0;
+     width: 100%;
+     display: flex;
+ }
+  
+ .nav-item{
+     width: 40%;  
+ }
+  
+ .nav-link {
+     color: black;
+     padding: 15px 10px;
+     text-decoration: none;
+     cursor: pointer;
+     position: relative;
+ }
+  
+ nav ul li a:hover {
+     color: black;
+     width: 20px;
+     padding: 4px;
+     transition: ease-in-out .2s;
+     -webkit-transition: ease-in-out .2s;
+     -moz-transition: ease-in-out .2s;
+     -o-transition: ease-in-out .2s;
+ }
+  
+  footer {
+      text-align: center;
+      padding: 40px;
+      color: black;
+  }
+  
+  .socialmedia{
+      display: inline;
+  }
+  
+  .social-links{
+      text-decoration: none;
+  }
+  
+ .region-title{
+     font-family: 'Oswald', sans-serif;
+     font-size: 25px;
+     list-style-type: none;
+     padding: 15px;
+ }
+  
+ .recipe-container {
+     padding: 2px 16px;
+ }
+  
+ .card{
+     box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+     transition: 0.5s;
+     width: 30%;
+     height: 100%;
+     display: flex;
+     padding: 10px;
+ }
+  
+ .card-header{
+     font-family: 'Oswald', sans-serif;
+ }
+  
+ .card:hover {
+     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+ }
+  
+ *{
+     box-sizing: border-box;
+ }
+  
+ 
+  
+ .display-4{
+     font-size: 52px;
+ }
+ 
+ .container-form {
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+.carousel {
+    padding: 50px;
+    
+
+  
+}
+
+h3{
+    font-family:'Oswald', sans-serif;
+    font-weight: normal;
+    color: black;
+
+}      
+        
+.Hometitle {font-family: 'Dancing script';font-size: 60px;
+
+}
+
+
+
+
+
+ 
+
+
+ 
+  
+  
+
+
+
+
+
