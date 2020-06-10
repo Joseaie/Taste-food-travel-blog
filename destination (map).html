@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">  
+  <title>DESTINATION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="jvectormap.css" type="text/css" media="screen"/>
+  <link rel="stylesheet" type="text/css" href="./themap.css">
+  <link href="main.css" rel="stylesheet">
+  <script src="jquery.js"></script>
+  <script src="jquery-jvectormap.2.js"></script>
+  <script src="jquery-jvectormap-world-mill.js"></script>
+
+<style>
+h1 {font-size: 25px;}
+
+
+
+</style>
+</head>
+<body>
+  
+    <header id="header" class="header-main">
+        <nav>
+            <div class="logo"><a href="index.html"> <img src="A Taste of Travel.png" style="width:120px; height:120px;border:0"  ></a></div>
+            <ul class= "nav-bar">
+                <li class= "nav-item">
+                    <a class="nav-link" href="index.html">HOME</a>
+                </li>
+               
+                <li class= "nav-item">
+                    <a class="nav-link" href="destination (map).html">DESTINATION</a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="recipes.html">RECIPES</a>
+                </li>
+                <li class= "nav-item">
+                    <a class="nav-link" href="contact.html">CONTACT</a>
+                </li>
+                
+                  </div>
+            </ul>
+        </nav>    
+        </header>
+</div>
+<h1> Explore the hidden gems and destinations of every part of the world!</h1>
+    <div style="width:100%;position:relative;min-height:300px;">
+<centre>
+    <div id="world-map-markers" style="width:100%;height:100%;position: absolute;"></centre></div>
+    </div>
+    <div id="markerSelectedtitle" style="position:relative; top:160px; height: 10px;"></div>
+    <div id="markerSelected" style="position:relative; top:85px; height: 130px;"></div>
+    <script>
+    $(function(){
+      $('#world-map-markers').vectorMap({map: 'world_mill',
+        zoomOnScroll: false,
+        zoomButtons: false,
+        backgroundColor: '#F5FFFA',/*background*/
+        markerStyle: {
+            initial: {
+                fill: 'white',
+                stroke: '#008d8d',
+                "fill-opacity": 1,
+                "stroke-width": 3,
+                r: 5.5
+            },
+            hover: {
+                fill: '#00b7b7',
+                stroke: 'white',
+                "stroke-width": 2,
+                cursor: 'pointer'
+            },
+            selected: {
+                fill: '#006666',/*circle fill*/
+                "stroke-width": 2,
+                r: 5.5,
+                stroke: 'white',
+            },
+            selectedHover: {}
+        },
+        regionStyle: {
+            initial: {
+                fill: '#FFDAB9',/*map colour*/
+                "fill-opacity": 1,
+                stroke: 'none',
+                "stroke-width": 0,
+                "stroke-opacity": 1
+            },
+            hover: {
+                "fill-opacity": 1,
+                fill:'#FFEFD5',/*map hover colour*/
+                cursor: 'default'
+            }
+        },
+       onRegionTipShow: function (e, label, code) {
+    e.preventDefault();
+},
+        markerLabelStyle: {
+          initial: {
+          fill: '#e67e00'
+          }
+        },
+      labels: {
+            markers: {
+                render: function(code) {
+                    if(code == '0') {
+                        return "USA";
+                    }
+                    if(code == '1') {
+                        return "South Africa";
+                    }
+                    if(code == '2') {
+                        return "Canada";
+                    }
+                    if(code == '3') {
+                        return "Brazil";
+                    }
+                    if(code == '4') {
+                        return "India";
+                    }
+                    if(code == '5') {
+                        return "Australia";
+                    }
+                    if(code == '6') {
+                        return "UK";
+                    }
+                    if(code == '7') {
+                        return "France";
+                    }
+                    if(code == '8') {
+                        return "Italy";
+                    }
+                    if(code == '9') {
+                        return "China";
+                    }
+                    if(code == '10') {
+                        return "Nigeria";
+                    }
+                    if(code == '11') {
+                        return "Algeria";
+                    }
+                }
+            }
+        },
+        markers: [
+            {latLng: [37.09, -95.71]},/*US*/
+            {latLng: [-30.55, 22.93]},/*South Africa*/
+            {latLng: [56.13, -106.34]},/*Canada*/
+            {latLng: [-15.47, -47.55]},/*Brazil*/
+            {latLng: [14.65, 76.96]},/*India*/
+            {latLng: [-33.86, 151.20]},/*AUS*/
+            {latLng: [51.50, -0.12]},/*UK*/
+            {latLng: [48.50, 2.20]},/*France*/
+            {latLng: [41.54, 12.29]},/*Italy*/
+            {latLng: [31.26, 121.52]},/*China*/
+            {latLng: [9.5, 7.32]},/*Nigeria*/
+            {latLng: [34.42, 3.8]},/*Algeria*/
+            
+    ],
+       
+        onMarkerClick: function(event, code) {
+          console.log ("here");
+            if(code == '0') {
+                $("#markerSelectedtitle").text('United States of America');
+                $("#markerSelected").text("Almost everyone on the planet knows soemthing about USA, even if they have never been.The Statue of liberty, the Empire State, the Hollywood sign, Las Vagas Neon, Golden Gate and the White House have long been global icons. With cities like New York, New Orleans, Miami, Los Angeles draw the most tourists, America above all is a land of stunnigly diverse and beautiful landscapes.The most obvious place to start from is New York City - diverse cultures, with colourful history and numerous skyscrapers to prove its status as the essential America city.");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('');
+
+            } else if(code == '1') {
+                $("#markerSelectedtitle").text('South Africa');
+                $("#markerSelected").text("With golden beaches, jagged mountains and national parks overflowing with wildlife, South Africa you have always imagined.Topping a long list of attractions is the republics spectacular wildlife and natural scenery. South Africa's cities are no less varied. In the far south, lorded over by iconic Table Mountain, Cape Town is South Africa's  most accessible gateway, with gorgeous beaches, vibrant mutlicultural neigbourhoods famous vineyards.The foodie capital of South Africa, Cape Towns reflects it's rich cultural heritage. Braii a traditional BBQ while Mandarin Milkter is a traditional dessert.");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('eu');
+
+            } else if(code == '2') {
+                $("#markerSelectedtitle").text('Canada');
+                $("#markerSelected").text("Whether you are a hardcore adrenline junkie, a wildlife enthusiasts or a city slicker looking for cutting-edge culture, Canada ticks all the boxes. Canadian cities are progressive, vibrant and  regularly feature on list of 'best places to live'.Toronto, has an idyllic beachside location on the shore of Lake Onatrio, while Canada's capital city, Ottawa, contains fantastic museums and gorgeous Rideau Canal for ice skating in winter.Vancouver city is known for the worlds foremost culinary destinations. Do not leave Vnacouver without trying candied salmon. A perfect balance between sweetness of maple syrup and the saltiness from smoked salmon to give a pleasureable snack.");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('');
+
+            } else if(code == '3') {
+                $("#markerSelectedtitle").text('Brazil');
+                $("#markerSelected").text("From the jungle calls of the Amazon to the thong-clad crowds of Copacabana beach, Brazil is an intoxicating mix of the big, the bold and the beautiful, making it one of the worlds favourite destination. It's vast coastlines is fringed with soft sands and island getaways. And then there is the Iguacu Falls, an unforgettable natural spectale featuring hundreds of waterfalls. One can go wild in Brazil; shooting the big surf of Santa Catarina; bouncing in beach buggies over the sand dunes of northern Natal. Sao Paulo serve the most exciting cuisine in the world. Be sure to try out Coxinaha when you are in Sao Paulo. ");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('');
+            } else if(code == '4') {
+                $("#markerSelectedtitle").text('India');
+                $("#markerSelected").text("Stretched between the golden beaches of the Indian Ocean and the snow-capped peaks of the Himalays, India dazzles with an incredible tapestry of natural and man-made wonders. From it's tiger-filled jungles to the frozen Himalayan deserts, india's veritable bounty of breath-taking scenery is sure to leave you awe-struck. Almost every first trip someone finds time for the so called 'Golden Triangle'; from Delhi, to the Taj Mahal at Agra, then on to Jaipur, the colourful capital of Rajasthan. Not to mention the mind-boggling array of food that the city of Mumabai has to offer such as Pav Bhaji, Chaat, curry rice and Kerala.");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('');
+            } else if(code == '5') {
+                $("#markerSelectedtitle").text('Australia');
+                $("#markerSelected").text("Australia is a land of savage beauty, big adventure and even bigger horizons. The fiery atmosphere of an Aussie Rules match in Melbourne and the champagne glitz of Sydney Harbour belongs to another planet entirely when compared to the quite expanse of the Red centre or the Surf bashed coastlines. There are well-travelled paths with Syndey and the east coast being a popular choice. Sydney, Australia's most popular city now ranks among 25 of the best cities for food in the world, this is mainly due to their multicultural heritage. Some of the great food include, Duck raviolo dumplings, modern chinese food have also exploded in the recent decade as well as thai food.");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('');
+                        } else if(code == '6') {
+                $("#markerSelectedtitle").text('United Kingdom');
+                $("#markerSelected").text("Few places cram in as much scenery, history and culture as the united Kingdom. It is a land of draft humour, tea-and-cake cliches and a thousands and one different personalites. London remains the natural focal point. Its' skyline, mixing medieval turret with soaring stell, is a good marker for the place as a whole. From it's markets to its museums, its pubs to palces, its bona fide world city packed with diversity. But you do not have to look far to find great urban centres - England, Scotland, Wales and Northern Irelnad are all home to richly engaging cities full of heritage. Some, like Bath and Edinburgh, offer postcard-perfect medieval skylines. British food is much more than just fish and chips. Some unique food and desserts that you should try when visiting UK are Shepherds pie, full English breakfast, Victoria sponage cake.");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('');
+            } else if(code == '7') {
+                $("#markerSelectedtitle").text('France');
+                $("#markerSelected").text("France is about world class art and artictecture. It seduces with iconic landmarks like the likes of Eiffel towver, Palace of Versaille and French Riveria. This country's repertoire is staggering in volume and diversity.For this reason it still remains the world's top tourism destination. Paris distinguishes itself from the culinary pack with its timeless recipes and divine flavours that no other place could replicate. Be it flipping crepes in Brittany, the culinary opportunities are endless.Try out our crepe recipe and Bon Appetit");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+                
+                
+                $('[name="location-selected"]').val('');
+            } else if(code == '8') {
+                $("#markerSelectedtitle").text('Italy');
+                $("#markerSelected").text("In Italy you will find sunny isles, glacial lakes and fiery volcanoes, rolling vineyards and urban lanscapes harbouring more UNESCO heritage sites than any other country on Earth. The artistic and architectural treasures of Rome, Venice, Florence and Naples draw visitors to them like moths to Flame. Do you go Skiing in the Dolomites, or cycling in wine country? Do you dive the sun-split waters of Sardina, climb Aeolian volcanoes or stalk market stalls in Naples.The choice is dazzling and bewildering. So take the advice of the locals. Slow down, sit back tuck in that napkin and get ready to begin. When in Rome as the Romans do, which is to immerse yourself in the city's fine culinary culture. Most popular dishes known include Roman pizza, pasta (Carbonara, cacoa e pep pasta), gelato and Tiramisu cake.");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('');
+            } else if(code == '9') {
+                $("#markerSelectedtitle").text('China');
+                $("#markerSelected").text("The key visitor attractions are renowned around the globe-think the Great Wall, the Forbidden City, and the Terracotta Warriors. It has a large number of wonderful attractions including antique sites and relics, imposing imperial palces, delicate water towns, amazing natural wonders, cultural heritage, and diversified folk customs. Shanghai has become a worldwide metropolis in the last fifty years during last century from the Bund along the Huangpu River, you can see the city's rapid development. With over 1100 restaurants with menus spanning from East to West plus a unique twist of it's own makes it the culinary capital of Asia. The top food that you should not miss out on your trip to China are, claypot rice, beef brisket, wonton, egg tart and roast goose.");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('');
+            } else if(code == '10') {
+                 $("#markerSelectedtitle").text('Nigeria');
+                $("#markerSelected").text("From loud laughter of traffic-choked Lagos to the green-fringed villages that line rivers and streams, Nigeria is one of the most exciting places to visit in Africa. It's national parks are home to some of the last remaining endangered species in West Africa, while its mountains offer a cooler climate.The 177 million people are as diverse as the nation itself.The cuisine too is varied; there are hot and spciy dishes, fresh fish and meat. Jollof Rice is the most popular food eaten in Nigeria that is made of rice prepared with tomato,onion, pepper and other spices.");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('');
+            } else if(code == '11') {
+               $("#markerSelectedtitle").text('Algeria');
+                $("#markerSelected").text("For an intrepid traveller, adventure awaits in Algeria. A beguiling blend of cultures, lanscapes and traditions this vast chunk of land contains everyhting from tranquil fishing ports and bustling cities to the unmatched drama of the Sahara desert. Sometimes called 'Algiers the White', which encompasses both crumbling ruins and newly-renovated spaces. The ancient port city of Oran has a European vibe: from the Sacre-Coeur Cathedral to the richly ornamented Palais de la Culture. The Sahara Desert is Algeria's defining feature and one of its biggest drawing cards. Algeria is known for its flavoursome dishes such as chorba Frik, a traditioanl soup that is mainly consumed in Ramadan.");
+                var $map = $('#world-map-markers').vectorMap('get', 'mapObject');
+                $map.clearSelectedMarkers();
+                $map.setSelectedMarkers([code]);
+
+                $('[name="location-selected"]').val('');
+             } else {
+                $("#markerSelected").text('');
+        }
+}
+    });
+});
+
+</script>
+</body>
+</html>
